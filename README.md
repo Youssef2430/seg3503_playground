@@ -1,4 +1,3 @@
 # seg3503_playground
 
-
-I'm just trying it out
+This is a repo to do all my labs for my SEG3503 course
