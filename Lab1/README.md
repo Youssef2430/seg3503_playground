@@ -6,7 +6,7 @@
 2. Ouvrir le terminal dans le fichier newmath_java
 3. Executer la commande : ./bin/run (pour Java) et ./bin/test (pour JUnit)
 
-![Screenshot][first.jpg]
+![alt text](https://github.com/Youssef2430/seg3503_playground/blob/main/Lab1/screenshots/first.png?raw=true)
 
 
 ## Elixir :
