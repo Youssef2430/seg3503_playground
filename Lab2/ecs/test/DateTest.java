@@ -1,6 +1,11 @@
-import static org.junit.jupiter.api.Assertions.*;
 
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+ 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+ 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 class DateTest {
 
@@ -85,30 +90,63 @@ class DateTest {
     Date d = new Date(3456,12,31);
     assertEquals(new Date(3457,1,1), d.nextDate());
   }
+
+
+
   @Test
-  void nextDate_sample16() {
-    Date d = new Date(1500,2,31);
-    assertEquals(new IllegalArgumentException(), d.nextDate());
-  }
+    void nextDate_sample19() {
+         
+        assertThrows(IllegalArgumentException.class, new Executable() {
+             
+            public void execute() throws Throwable {
+                Date d = new Date(1458,15,12);
+                d.nextDate();
+            }
+        });
+    }
+    @Test
+    void nextDate_sample18() {
+         
+        assertThrows(IllegalArgumentException.class, new Executable() {
+             
+            public void execute() throws Throwable {
+                Date d = new Date(-1,10,20);
+                d.nextDate();
+            }
+        });
+    }
+    @Test
+    void nextDate_sample17() {
+         
+        assertThrows(IllegalArgumentException.class, new Executable() {
+             
+            public void execute() throws Throwable {
+                Date d = new Date(1500,2,29);
+                d.nextDate();
+            }
+        });
+    }
+    @Test
+    void nextDate_sample16() {
+         
+        assertThrows(IllegalArgumentException.class, new Executable() {
+             
+            public void execute() throws Throwable {
+                Date d = new Date(1500,2,31);
+                d.nextDate();
+            }
+        });
+    }
   @Test
-  void nextDate_sample17() {
-    Date d = new Date(1500,2,29);
-    assertEquals(new IllegalArgumentException(), d.nextDate());
-  }
-  @Test
-  void nextDate_sample18() {
-    Date d = new Date(-1,10,20);
-    assertEquals(new IllegalArgumentException(), d.nextDate());
-  }
-  @Test
-  void nextDate_sample19() {
-    Date d = new Date(1458,15,12);
-    assertEquals(new IllegalArgumentException(), d.nextDate());
-  }
-  @Test
-  void nextDate_sample20() {
-    Date d = new Date(1975,6,-50);
-    assertEquals(new IllegalArgumentException(), d.nextDate());
-  }
+    void nextDate_sample20() {
+         
+        assertThrows(IllegalArgumentException.class, new Executable() {
+             
+            public void execute() throws Throwable {
+                Date d = new Date(1975,6,-50);
+                d.nextDate();
+            }
+        });
+    }
 
 }

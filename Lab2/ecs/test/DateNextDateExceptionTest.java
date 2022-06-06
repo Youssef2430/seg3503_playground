@@ -7,37 +7,43 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+ 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.function.Executable;
+
+
 @RunWith(Parameterized.class)
 public class DateNextDateExceptionTest
 {
+    private int year;
+    private int month;
+    private int day;
 
-    private Date current;
-    private Date expectedResult;
 
-    public DateNextDateExceptionTest(int year, int month, int day, int expYear, int expMonth, int expDay)
+    public DateNextDateExceptionTest(int year, int month, int day)
 	{
-		this.current = new Date(year,month,day);
-		this.expectedResult = new Date(expYear,expMonth,expDay);
+		this.year = year;
+        this.month = month;
+        this.day = day;
 	}
-
 
     @Parameters
 	public static List<Integer[]> data( )
 	{
 		List<Integer[]> params = new LinkedList<Integer[]>( );
-		params.add(new Integer[] { 1700,6,20,1700,6,21 });
-		params.add(new Integer[] { 2005,4,15,2005,4,16 });
-		params.add(new Integer[] { 1901,7,20,1901,7,21 });
-		params.add(new Integer[] { 1500,2,17,1500,2,18 });
+		params.add(new Integer[] { 1458,15,12 });
+		params.add(new Integer[] { -1,10,20 });
+		params.add(new Integer[] { 1500,2,31 });
+		params.add(new Integer[] { 1975,6,-50 });
 		return params;
 	}
 
     @Test
-	public void testDate()
+	public void testExeptionDate()
 	{
-		Date actualDate = current.nextDate();
-		Assert.assertEquals(expectedResult, actualDate);
+        assertThrows(IllegalArgumentException.class, () -> {
+            Date d = new Date(year,month,day);
+        });
 	}
-
 
 }
