@@ -14,4 +14,4 @@
 
 # Exercice 2 :
 
-[Description](screenshots/tests)
+![alt text](https://github.com/Youssef2430/seg3503_playground/blob/main/Lab2/screenshots/tests.png)
