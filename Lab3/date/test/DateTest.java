@@ -149,4 +149,273 @@ class DateTest {
     );
   }
 
+  @Test
+  void setDate_invalid1() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(1975, 6, 100)
+    );
+  }
+
+  @Test
+  void setDate_invalid2() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(1975, 4, 31)
+    );
+  }
+
+  @Test
+  void setDate_invalid3() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(2024, 2, 30)
+    );
+  }
+
+  @Test
+  void setDate_invalid4() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(2024, 15, 30)
+    );
+  }
+
+  @Test
+  void toString_invalid() {
+    Date today = new Date(2024, 1, 30);
+    assertEquals("2024/January/30", today.toString());
+  }
+
+  @Test
+  void month_invalid() {
+    Date today = new Date(2024, 1, 30);
+    assertEquals(today.getMonth(), 1);
+  }
+
+  @Test
+  void testLeap() {
+    Date today = new Date(2000, 1, 30);
+    assertTrue(today.isLeapYear());
+  }
+
+  @Test
+  void testequals() {
+    Date today = new Date(2000, 1, 30);
+    assertTrue(!(today.equals("Yes")));
+  }
+
+  @Test
+  void testequals2() {
+    Date today = new Date(2000, 1, 30);
+    assertTrue((today.equals(new Date(2000, 1, 30))));
+  }
+
+  @Test
+  void testequals3() {
+    Date today = new Date(2000, 1, 30);
+    assertTrue(!(today.equals(new Date(2000, 1, 29))));
+  }
+  @Test
+  void testequals6() {
+    Date today = new Date(2000, 1, 30);
+    assertTrue(!(today.equals(new Date(2000, 2, 29))));
+  }
+
+  @Test
+  void testequals7() {
+    Date today = new Date(2000, 1, 30);
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> assertTrue(!(today.equals(new Date(2001, 2, 29))))
+    );
+    
+  }
+
+  @Test
+  void testequals4() {
+    Date today = new Date(2000, 1, 30);
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> assertTrue(!(today.equals(new Date(2000, 2, 30))))
+    );
+  }
+
+  @Test
+  void testequals8() {
+    Date today = new Date(2000, 1, 30);
+    assertTrue(!(today.equals(new Date(2001, 1, 29))));
+  }
+
+  @Test
+  void testequals9() {
+    Date today = new Date(2000, 1, 30);
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> assertTrue(!(today.equals(new Date(2001, 2, 30))))
+    );
+  }
+
+  @Test
+  void testequals5() {
+    Date today = new Date(2000, 1, 30);
+    assertTrue(!(today.equals(new Date(2001, 1, 30))));
+  }
+
+  @Test
+  void month_test() {
+    Date today = new Date(2024, 4, 30);
+    assertEquals(today.nextDate(), new Date(2024, 5, 1));
+  }
+
+  @Test
+  void month_test4() {
+    Date today = new Date(2024, 1, 30);
+    assertEquals(today.nextDate(), new Date(2024, 1, 31));
+  }
+
+  @Test
+  void month_test6() {
+    Date today = new Date(2024, 1, 29);
+    assertEquals(today.nextDate(), new Date(2024, 1, 30));
+  }
+
+  @Test
+  void month_test5() {
+    Date today = new Date(2024, 4, 29);
+    assertEquals(today.nextDate(), new Date(2024, 4, 30));
+  }
+
+  @Test
+  void month_test2() {
+    Date today = new Date(2024, 1, 31);
+    assertEquals(today.nextDate(), new Date(2024, 2, 1));
+  }
+
+  @Test
+  void month_test3() {
+    Date today = new Date(2024, 1, 15);
+    assertEquals(today.nextDate(), new Date(2024, 1, 16));
+  }
+
+  @Test
+  void month_test7() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(2024, -20, 30)
+    );
+  }
+
+  @Test
+  void month_test8() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(2024, 20, 30)
+    );
+  }
+
+  @Test
+  void month_test9() {
+    Date today = new Date(2024, 9, 15);
+    assertEquals(today.nextDate(), new Date(2024, 9, 16));
+  }
+
+  @Test
+  void month_test10() {
+    Date today = new Date(2024, 11, 15);
+    assertEquals(today.nextDate(), new Date(2024, 11, 16));
+  }
+
+
+  @Test
+  void end_test() {
+    Date today = new Date(2024, 3, 31);
+    assertEquals(today.nextDate(), new Date(2024, 4, 1));
+  }
+
+  
+
+  @Test
+  void end_test2() {
+    Date today = new Date(2024, 9, 29);
+    assertEquals(today.nextDate(), new Date(2024, 9, 30));
+  }
+
+  @Test
+  void end_test3() {
+    Date today = new Date(2024, 8, 30);
+    assertEquals(today.nextDate(), new Date(2024, 8, 31));
+  }
+
+  @Test
+  void end_test4() {
+    Date today = new Date(2024, 8, 29);
+    assertEquals(today.nextDate(), new Date(2024, 8, 30));
+  }
+
+  @Test
+  void end_test5() {
+    Date today = new Date(2024, 9, 30);
+    assertEquals(today.nextDate(), new Date(2024, 10, 1));
+  }
+
+  @Test
+  void end_test6() {
+    Date today = new Date(2024, 2, 29);
+    assertEquals(today.nextDate(), new Date(2024, 3, 1));
+  }
+
+  @Test
+  void end_test7() {
+    assertThrows(
+      IllegalArgumentException.class,
+      () -> new Date(2023, 2, 29)
+    );
+  }
+
+  @Test
+  void end_test8() {
+    Date today = new Date(2024, 2, 28);
+    assertEquals(today.nextDate(), new Date(2024, 2, 29));
+  }
+
+  @Test
+  void end_test9() {
+    Date today = new Date(2023, 2, 28);
+    assertEquals(today.nextDate(), new Date(2023, 3, 1));
+    
+  }
+
+  @Test
+  void end_test10() {
+    Date today = new Date(2024, 3, 29);
+    assertEquals(today.nextDate(), new Date(2024, 3, 30));
+  }
+
+  @Test
+  void end_test11() {
+    Date today = new Date(2023, 3, 29);
+    assertEquals(today.nextDate(), new Date(2023, 3, 30));
+  }
+
+  @Test
+  void end_test12() {
+    Date today = new Date(2024, 3, 28);
+    assertEquals(today.nextDate(), new Date(2024, 3, 29));
+  }
+
+  @Test
+  void end_test13() {
+    Date today = new Date(2023, 3, 28);
+    assertEquals(today.nextDate(), new Date(2023, 3, 29));
+  }
+
+
+
+
+  
+
+  
+
+
 }
