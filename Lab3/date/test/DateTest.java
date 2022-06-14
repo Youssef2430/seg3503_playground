@@ -410,6 +410,26 @@ class DateTest {
     assertEquals(today.nextDate(), new Date(2023, 3, 29));
   }
 
+  @Test
+  void end_test14() {
+    Date today = new Date(2000, 2, 29);
+    assertEquals(today.nextDate(), new Date(2000, 3, 1));
+  }
+
+  
+
+  @Test
+  void end_test16() {
+    Date today = new Date(2000, 2, 28);
+    assertEquals(today.nextDate(), new Date(2000, 2, 29));
+  }
+
+  @Test
+  void end_test17() {
+    Date today = new Date(2001, 2, 28);
+    assertEquals(today.nextDate(), new Date(2001, 3, 1));
+  }
+
 
 
 

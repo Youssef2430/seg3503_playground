@@ -52,11 +52,12 @@ public class Date {
 		if (isThirtyDayMonth() && day > 30) {
 			throw new IllegalArgumentException("day must less than 30 for month " + monthNames[month-1]);
 		}
-		if (this.month == 2 && isLeapYear() && day > 29) {
-			throw new IllegalArgumentException("day must less than 29 for month " + monthNames[month-1] + " on a leap year.");
-		}
-		if (this.month == 2 && !isLeapYear() && day > 28) {
-			throw new IllegalArgumentException("day must less than 28 for month " + monthNames[month-1] + " on a non leap year.");
+		if (this.month == 2) {
+			if(isLeapYear() && day > 29){
+				throw new IllegalArgumentException("day must less than 29 for month " + monthNames[month-1] + " on a leap year.");
+			}else if( !isLeapYear() && day > 28 ){
+				throw new IllegalArgumentException("day must less than 28 for month " + monthNames[month-1] + " on a non leap year.");
+			}
 		}
 		this.day = day;
 	}
@@ -106,9 +107,21 @@ public class Date {
 	 */
 	private boolean isEndOfMonth() {
 		boolean leap = isLeapYear();
-		if (day == 31 || (day == 30 && isThirtyDayMonth()) ||
-				(this.month == 2 && ((day == 29 && leap) || (day == 28 && !leap))))
+		if (day == 31){
 			return true;
+		}
+		if((day == 30 && isThirtyDayMonth())){
+			return true;
+		}
+		if((this.month == 2 )){
+			if((day == 29)){
+				return true;
+			}
+			if((day == 28 && !leap)){
+				return true;
+			}
+			return false;
+		}
 		else return false;
 	}
 
