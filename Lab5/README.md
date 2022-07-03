@@ -10,6 +10,6 @@ The problem gets fixed once we implement the code the right way.
 
 Here is a screenshot of all the tests passing :
 
-![alt text](https://github.com/Youssef2430/seg3503_playground/blob/main/Lab4/screenshots/first.png?raw=true)
+![alt text](https://github.com/Youssef2430/seg3503_playground/blob/main/Lab5/screenshots/Twitter.png?raw=true)
 
 PS : the function actual_call() gives a different results each time since there isn't always a "me" in the tweets so it's dependent on the result that we don't control unlike the other tests.
